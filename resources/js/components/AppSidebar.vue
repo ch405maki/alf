@@ -21,7 +21,7 @@ const mainNavItems: NavItem[] = [
     },
     {
         title: 'Posts',
-        href: '/',
+        href: '/posts',
         icon: Megaphone,
     },
     {

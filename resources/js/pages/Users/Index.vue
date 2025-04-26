@@ -34,7 +34,7 @@
             </Button>
   
             <!-- Create User Button -->
-            <CreateUserDialog />
+            <CreateUserDialog :departments="departments" />
           </div>
         </div>
   
@@ -59,28 +59,37 @@
   import type { AxiosError } from "axios";
   import { useToast } from "vue-toastification";
   
-  // Define the User type
   interface User {
     id: number;
     name: string;
     email: string;
     role: string;
     status: string;
+    department?: {
+      id: number;
+      name: string;
+    } | null;
   }
-  
-  // Define props
-  const props = defineProps<{ users: User[] }>();
+
+// Define props
+const props = defineProps<{ 
+  users: User[];
+  departments: Array<{
+    id: number;
+    name: string;
+  }>;
+}>();
   
   const breadcrumbs = [{ title: "Users Management", href: "/users" }];
   const fileInput = ref<HTMLInputElement | null>(null);
   const toast = useToast();
-  const loading = ref(false); // Loading state
-  const searchQuery = ref(""); // Search query
+  const loading = ref(false);
+  const searchQuery = ref(""); 
   
   // Filtered Users
   const filteredUsers = computed(() => {
     if (!searchQuery.value) {
-      return props.users; // Return all users if no search query
+      return props.users; 
     }
   
     const query = searchQuery.value.toLowerCase();

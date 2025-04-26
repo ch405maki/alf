@@ -8,6 +8,7 @@ use App\Imports\UsersImport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
+use App\Models\Department;
 
 
 use App\Models\User;
@@ -16,9 +17,12 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = User::with('department')->get(); // Eager load departments
+        $departments = Department::all(); // Get all departments
+        
         return Inertia::render('Users/Index', [
-            'users' => $users
+            'users' => $users,
+            'departments' => $departments // Pass departments to the frontend
         ]);
     }
     
@@ -30,6 +34,7 @@ class UserController extends Controller
             'password' => 'required|string|min:8',
             'role' => 'required|in:admin,user',
             'status' => 'required|in:active,inactive',
+            'department_id' => 'nullable|exists:departments,id',
         ]);
 
         $user = User::create([
@@ -38,10 +43,12 @@ class UserController extends Controller
             'password' => bcrypt($validatedData['password']),
             'role' => $validatedData['role'],
             'status' => $validatedData['status'],
+            'department_id' => $validatedData['department_id'] ?? null,
         ]);
 
         return response()->json(['message' => 'User created successfully', 'user' => $user], 201);
     }
+
 
     public function uploadUsers(Request $request)
     {

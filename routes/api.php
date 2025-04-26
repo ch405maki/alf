@@ -17,7 +17,6 @@ Route::put('/users/{id}', [UserController::class, 'update']);
 Route::patch('/users/{user}/status', [UserController::class, 'updateStatus']);
 
 
-Route::get('/departments', [DepartmentController::class, 'index']);
 Route::post('/departments', [DepartmentController::class, 'store']);
 Route::get('/departments/{department}', [DepartmentController::class, 'show']);
 Route::put('/departments/{department}', [DepartmentController::class, 'update']);

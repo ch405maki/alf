@@ -3,7 +3,7 @@
     <TableHeader>
       <TableRow>
         <TableHead>User Name</TableHead>
-        <TableHead>Email</TableHead>
+        <TableHead>Department</TableHead>
         <TableHead>Role</TableHead>
         <TableHead>Status</TableHead>
         <TableHead class="text-right">Action</TableHead>
@@ -11,8 +11,8 @@
     </TableHeader>
     <TableBody>
       <TableRow v-for="user in users" :key="user.id">
-        <TableCell class="font-medium">{{ user.name }}</TableCell>
-        <TableCell>{{ user.email }}</TableCell>
+        <TableCell class="font-medium">{{ user.name }}<br><i>{{ user.email }}</i></TableCell>
+        <TableCell>{{ user.department?.name || 'None' }}</TableCell>
         <TableCell>{{ user.role }}</TableCell>
         <TableCell>
           <CustomSwitch
