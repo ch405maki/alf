@@ -44,6 +44,10 @@ const props = defineProps<{
 const create = () => {
   router.visit(route('posts.create'))
 }
+
+const handleDelete = () => {
+  router.reload({ only: ['posts'] })
+}
 </script>
 
 <template>
@@ -55,7 +59,7 @@ const create = () => {
             <Button @click="create()">Create</Button>
         </div>
         <div class="relative min-h-[100vh] flex-1 rounded-xl border border-sidebar-border/70 dark:border-sidebar-border">
-            <PostsTable :posts="posts" />
+          <PostsTable :posts="posts" @delete="handleDelete" />
         </div>
     </div>
   </AppLayout>

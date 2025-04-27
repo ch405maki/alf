@@ -9,6 +9,9 @@ import { initializeTheme } from './composables/useAppearance';
 import Toast from 'vue-toastification';
 import 'vue-toastification/dist/index.css';
 
+// Import CKEditor
+import CKEditor from '@ckeditor/ckeditor5-vue';
+
 // Extend ImportMeta interface for Vite...
 declare module 'vite/client' {
     interface ImportMetaEnv {
@@ -31,6 +34,7 @@ createInertiaApp({
         createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(Toast)
+            .use(CKEditor)
             .use(ZiggyVue)
             .mount(el);
     },

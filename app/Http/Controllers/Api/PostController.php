@@ -35,13 +35,14 @@ class PostController extends Controller
             ->latest()
             ->get();
 
-        $userId = Auth::id();
+        $user = Auth::user();
         $departments = Department::all();
         
         return Inertia::render('Post/Create', [
             'posts' => $posts,
             'departments' => $departments,
-            'userId' => $userId,
+            'userId' => $user->id,
+            'userDepartmentId' => $user->department_id,
         ]);
     }
 

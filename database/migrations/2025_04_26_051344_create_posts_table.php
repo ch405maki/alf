@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('document')->nullable();
             $table->string('link')->nullable();
             $table->string('image')->nullable();
-            $table->enum('status', ['draft', 'published', 'archived'])->default('draft');
+            $table->enum('status', ['draft', 'published', 'archived'])->default('published');
             $table->timestamps();
         });
     }
