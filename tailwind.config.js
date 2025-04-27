@@ -13,6 +13,7 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Instrument Sans', ...defaultTheme.fontFamily.sans],
+                times: ['Times New Roman', 'serif'],
             },
             borderRadius: {
                 lg: 'var(--radius)',
@@ -69,6 +70,19 @@ export default {
                     'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
                     border: 'hsl(var(--sidebar-border))',
                     ring: 'hsl(var(--sidebar-ring))',
+                },
+                'official-purple': {
+                    '50': '#faf6fe',
+                    '100': '#f2ebfc',
+                    '200': '#e7dafa',
+                    '300': '#d5bdf5',
+                    '400': '#bb93ed',
+                    '500': '#a169e3',
+                    '600': '#8b4ad3',
+                    '700': '#7538b8',
+                    '800': '#66339a',
+                    '900': '#52297a',
+                    '950': '#361358',
                 },
             },
         },

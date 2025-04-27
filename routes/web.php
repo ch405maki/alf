@@ -6,10 +6,13 @@ use Inertia\Inertia;
 use App\Http\Controllers\Users\UserController;
 use App\Http\Controllers\Api\DepartmentController;
 use App\Http\Controllers\Api\PostController;
+use App\Http\Controllers\Public\MainPageController;
 
-Route::get('/', function () {
-    return Inertia::render('Welcome');
-})->name('home');
+
+Route::get('/', [MainPageController::class, 'index'])->name('home');
+
+
+########################################## Authenticated users access ##########################################
 
 Route::get('dashboard', function () {   
     return Inertia::render('Dashboard');
